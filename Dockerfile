@@ -1,17 +1,15 @@
 FROM python:3.10-slim
 
-# Install system dependencies
-RUN apt-get update && \
-    apt-get install -y awscli && \
-    rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
 
-# Copy requirements first (better caching)
+# Install awscli using pip (lightweight)
+RUN pip install --no-cache-dir awscli
+
+# Copy requirements first
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir transformers accelerate
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir transformers accelerate
 
 # Copy app files
 COPY . .
