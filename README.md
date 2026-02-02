@@ -93,7 +93,7 @@ newgrp docker
 
 - AWS_ECR_LOGIN_URI = demo>>  527552777739.dkr.ecr.us-east-1.amazonaws.com/text-s
 
-- ECR_REPOSITORY_NAME = simple-app
+- ECR_REPOSITORY_NAME = text-s
 
  
 
